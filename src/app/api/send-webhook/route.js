@@ -1,14 +1,10 @@
 import { createHmac } from "crypto";
 
-const DEFAULT_URL = process.env.NODE_ENV === "development"
-  ? "http://localhost:3000/api/webhook/appx"
-  : "https://tracko.teachingpariksha.com/api/webhook/appx";
-
 export async function POST(request) {
   const secret = process.env.APPX_WEBHOOK_SECRET;
   if (!secret) {
     return Response.json(
-      { error: "APPX_WEBHOOK_SECRET is not set in APX CLONE .env.local" },
+      { error: "APPX_WEBHOOK_SECRET is not set in .env.local" },
       { status: 500 }
     );
   }
@@ -21,7 +17,13 @@ export async function POST(request) {
   }
 
   const { _targetUrl, ...payload } = body;
-  const targetUrl = _targetUrl || DEFAULT_URL;
+
+  // Resolve relative paths against the incoming request's origin
+  let targetUrl = _targetUrl || "/api/webhook/appx";
+  if (targetUrl.startsWith("/")) {
+    const { origin } = new URL(request.url);
+    targetUrl = origin + targetUrl;
+  }
 
   const rawBody = JSON.stringify(payload);
   const signature =

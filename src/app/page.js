@@ -207,13 +207,15 @@ function statusColor(code) {
 
 export default function SimulatorPage() {
   const [targetUrl, setTargetUrl] = useState("");
-  useEffect(() => {
-    setTargetUrl("https://tracko.teachingpariksha.com/api/webhook/appx");
-  }, []);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    const origin = window.location.origin;
     if (window.location.hostname === "localhost") {
       setTargetUrl("http://localhost:3000/api/webhook/appx");
+    } else {
+      setTargetUrl(origin + "/api/webhook/appx");
     }
   }, []);
   const [selectedEvent, setSelectedEvent] = useState("course.created");
@@ -304,8 +306,8 @@ export default function SimulatorPage() {
         <div className={styles.simLogo}>
           <span>Teaching Pariksha</span>
         </div>
-        <div className={styles.simTarget}>
-          Target: <code>{targetUrl || "—"}</code>
+        <div className={styles.simTarget} suppressHydrationWarning>
+          Target: <code>{targetUrl || (mounted ? "" : "—")}</code>
         </div>
       </header>
 
@@ -338,6 +340,7 @@ export default function SimulatorPage() {
               value={targetUrl}
               onChange={(e) => setTargetUrl(e.target.value)}
               placeholder="https://your-backend.com/api/webhook/appx"
+              suppressHydrationWarning
             />
           </section>
 
@@ -348,6 +351,7 @@ export default function SimulatorPage() {
               className={styles.select}
               value={selectedEvent}
               onChange={handleEventChange}
+              suppressHydrationWarning
             >
               {Object.keys(EVENT_SCHEMAS).map((ev) => (
                 <option key={ev} value={ev}>
@@ -367,6 +371,7 @@ export default function SimulatorPage() {
                   className={styles.input}
                   value="Auto-generated on send"
                   disabled
+                  suppressHydrationWarning
                 />
               </label>
               {schema.fields.map((f) => {
@@ -383,12 +388,14 @@ export default function SimulatorPage() {
                         onChange={(e) =>
                           handleFieldChange(f.key, fromDatetimeLocal(e.target.value))
                         }
+                        suppressHydrationWarning
                       />
                     ) : f.type === "select" ? (
                       <select
                         className={styles.select}
                         value={formData[f.key] ?? f.default}
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
+                        suppressHydrationWarning
                       >
                         {f.options.map((o) => (
                           <option key={o.value} value={o.value}>
@@ -404,6 +411,7 @@ export default function SimulatorPage() {
                           value={formData[f.key] ?? ""}
                           placeholder="appx_course_123, appx_course_456"
                           onChange={(e) => handleFieldChange(f.key, e.target.value)}
+                          suppressHydrationWarning
                         />
                         <span className={styles.fieldHint}>
                           Separate multiple IDs with commas
@@ -415,6 +423,7 @@ export default function SimulatorPage() {
                         type={f.type === "number" ? "number" : "text"}
                         value={formData[f.key] ?? ""}
                         onChange={(e) => handleFieldChange(f.key, e.target.value)}
+                        suppressHydrationWarning
                       />
                     )}
                   </label>
@@ -427,6 +436,7 @@ export default function SimulatorPage() {
             className={styles.sendBtn}
             onClick={handleSend}
             disabled={loading}
+            suppressHydrationWarning
           >
             {loading ? "Sending…" : "Send Webhook"}
           </button>
@@ -495,8 +505,8 @@ export default function SimulatorPage() {
                 {log.map((entry, i) => (
                   <div key={i} className={styles.logRow}>
                     <span className={styles.logEvent}>{entry.event}</span>
-                    <span className={styles.logTs}>
-                      {new Date(entry.timestamp).toLocaleTimeString()}
+                    <span className={styles.logTs} suppressHydrationWarning>
+                      {mounted && new Date(entry.timestamp).toLocaleTimeString()}
                     </span>
                     <span
                       className={`${styles.logStatus} ${statusColor(entry.status)}`}
