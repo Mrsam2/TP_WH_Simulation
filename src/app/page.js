@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
+import PushNotificationSender from "./PushNotificationSender";
 
 const EVENT_SCHEMAS = {
   "course.created": {
@@ -206,6 +207,7 @@ function statusColor(code) {
 }
 
 export default function SimulatorPage() {
+  const [activeTab, setActiveTab] = useState("webhook");
   const [targetUrl, setTargetUrl] = useState("");
   const [mounted, setMounted] = useState(false);
 
@@ -303,15 +305,45 @@ export default function SimulatorPage() {
   return (
     <div className={styles.simContainer}>
       <header className={styles.simHeader}>
-        <div className={styles.simLogo}>
-          <span>Teaching Pariksha</span>
+        <div className={styles.simLogoGroup}>
+          <div className={styles.simLogo}>
+            Teaching Pariksha
+          </div>
+          <nav className={styles.simNavTabs}>
+            <button
+              className={`${styles.simNavTab} ${
+                activeTab === "webhook" ? styles.activeNavTab : ""
+              }`}
+              onClick={() => setActiveTab("webhook")}
+              type="button"
+            >
+              ⚡ Webhook Simulator
+            </button>
+            <button
+              className={`${styles.simNavTab} ${
+                activeTab === "push" ? styles.activeNavTab : ""
+              }`}
+              onClick={() => setActiveTab("push")}
+              type="button"
+            >
+              🔔 Push Notifications
+            </button>
+          </nav>
         </div>
+
         <div className={styles.simTarget} suppressHydrationWarning>
-          Target: <code>{targetUrl || (mounted ? "" : "—")}</code>
+          {activeTab === "webhook" ? (
+            <>Target: <code>{targetUrl || (mounted ? "" : "—")}</code></>
+          ) : (
+            <>Expo Push API: <code>https://exp.host/--/api/v2/push/send</code></>
+          )}
         </div>
       </header>
 
-      <div className={styles.simBody}>
+      {activeTab === "push" ? (
+        <PushNotificationSender />
+      ) : (
+        <div className={styles.simBody}>
         {/* Left Panel */}
         <div className={styles.leftPanel} suppressHydrationWarning>
           {/* Presets */}
@@ -520,6 +552,7 @@ export default function SimulatorPage() {
           </section>
         </div>
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
 }

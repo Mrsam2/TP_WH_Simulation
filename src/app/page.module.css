@@ -225,31 +225,72 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   border-bottom: 1px solid var(--card-border);
-  background: rgba(5, 5, 5, 0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(16px);
   position: sticky;
   top: 0;
   z-index: 100;
+  gap: 1rem;
+}
+
+.simLogoGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .simLogo {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 
-.simLogo span {
-  color: var(--primary);
-  font-weight: 400;
-  margin-left: 6px;
+.simNavTabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  padding: 4px;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+.simNavTab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.simNavTab:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.activeNavTab {
+  background: var(--primary) !important;
+  color: white !important;
+  box-shadow: 0 2px 10px hsla(var(--primary-hsl), 0.4);
 }
 
 .simTarget {
   font-size: 0.8rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .simTarget code {
@@ -543,6 +584,328 @@
   text-align: center;
 }
 
+/* ─── Push Notification Component Extensions ──────────────── */
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.presetDesc {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.smallHelperBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
+  color: hsl(var(--accent-hsl));
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smallHelperBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.recentTokensRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tokenPill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  font-family: monospace;
+  padding: 2px 8px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.tokenPill:hover {
+  border-color: var(--primary);
+  color: white;
+}
+
+.textarea {
+  resize: vertical;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.4;
+}
+
+.codeArea {
+  resize: vertical;
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.jsonErrorText {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.imagePreviewBox {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mockNotificationCard {
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mockHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+}
+
+.mockAppIcon {
+  font-size: 0.85rem;
+}
+
+.mockAppName {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+  font-size: 0.68rem;
+}
+
+.mockTime {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mockTitle {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: white;
+}
+
+.mockBody {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.35;
+}
+
+.mockImage {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badgeLabel {
+  background: hsla(var(--primary-hsl), 0.15);
+  color: var(--primary);
+  border: 1px solid hsla(var(--primary-hsl), 0.3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.timerControlRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rangeInput {
+  accent-color: var(--primary);
+  cursor: pointer;
+  width: 100%;
+}
+
+.timerQuickBtns {
+  display: flex;
+  gap: 6px;
+}
+
+.timerChip {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timerChip:hover {
+  border-color: var(--primary);
+  color: white;
+}
+
+.activeChip {
+  background: hsla(var(--primary-hsl), 0.2) !important;
+  border-color: var(--primary) !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+.toggleAdvancedBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  padding: 4px 0;
+}
+
+.toggleAdvancedBtn:hover {
+  color: white;
+}
+
+.advancedBox {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 6px;
+}
+
+.advancedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.countdownCard {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.9), rgba(15, 23, 42, 0.9));
+  border: 1px solid var(--primary);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 30px hsla(var(--primary-hsl), 0.3);
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { box-shadow: 0 0 15px hsla(var(--primary-hsl), 0.2); }
+  to { box-shadow: 0 0 30px hsla(var(--primary-hsl), 0.5); }
+}
+
+.countdownHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.spinnerIcon {
+  font-size: 1.5rem;
+}
+
+.progressBarBg {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 0.3s linear;
+}
+
+.cancelBtn {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.cancelBtn:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ticketBox {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.textGreen { color: #22c55e; }
+.textRed { color: #ef4444; }
+
+.errorExplanation {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--card-border);
+  font-size: 0.78rem;
+  color: #f87171;
+}
+
+.logTitleCell {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.logTime {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.logTokenCell {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media (max-width: 900px) {
   .simBody {
     grid-template-columns: 1fr;
@@ -553,5 +916,9 @@
     max-height: none;
     border-right: none;
     border-bottom: 1px solid var(--card-border);
+  }
+
+  .advancedGrid {
+    grid-template-columns: 1fr;
   }
 }
