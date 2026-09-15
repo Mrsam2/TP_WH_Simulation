@@ -1,14 +1,6 @@
 import { createHmac } from "crypto";
 
 export async function POST(request) {
-  const secret = process.env.APPX_WEBHOOK_SECRET;
-  if (!secret) {
-    return Response.json(
-      { error: "APPX_WEBHOOK_SECRET is not set in .env.local" },
-      { status: 500 }
-    );
-  }
-
   let body;
   try {
     body = await request.json();
@@ -26,18 +18,24 @@ export async function POST(request) {
   }
 
   const rawBody = JSON.stringify(payload);
-  const signature =
-    "sha256=" + createHmac("sha256", secret).update(rawBody).digest("hex");
+  const secret = process.env.APPX_WEBHOOK_SECRET;
+  const signature = secret
+    ? "sha256=" + createHmac("sha256", secret).update(rawBody).digest("hex")
+    : "disabled";
+
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  if (secret) {
+    headers["X-AppX-Signature"] = signature;
+  }
 
   let trackoStatus;
   let trackoBody;
   try {
     const res = await fetch(targetUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-AppX-Signature": signature,
-      },
+      headers,
       body: rawBody,
     });
     trackoStatus = res.status;
