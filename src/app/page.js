@@ -267,6 +267,75 @@ const PRESETS = [
     }),
   },
   {
+    label: "Class (data.event: delete)",
+    apply: () => ({
+      timestamp: "2026-09-15T18:00:00.000Z",
+      data: {
+        event: "delete",
+        courseId: ["718", "743"],
+        ClassId: "class_chem_som_part3",
+        courseName: ["CTET CC Combo (Paper 1+2) M&S", "BPSC TRE 4.0 - Chemistry"],
+        topic: "Chemistry - States of matter -Part - 3",
+        teacher: "Saurabh",
+        scheduledDate: "2026-09-14",
+        scheduledTime: "20:00",
+        duration: "01:40:00",
+        isWeekOff: "Working Day",
+        Type: ["Live class", "PDF", "folder"],
+        Class_path: [
+          "CTET CC Combo (Paper 1+2) M&S / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+          "BPSC TRE 4.0 - Chemistry / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+        ],
+      },
+    }),
+  },
+  {
+    label: "Class (data.event: update)",
+    apply: () => ({
+      timestamp: "2026-09-15T18:00:00.000Z",
+      data: {
+        event: "update",
+        courseId: ["718", "743"],
+        ClassId: "class_chem_som_part3",
+        courseName: ["CTET CC Combo (Paper 1+2) M&S", "BPSC TRE 4.0 - Chemistry"],
+        topic: "Chemistry - States of matter -Part - 3",
+        teacher: "Saurabh",
+        scheduledDate: "2026-09-14",
+        scheduledTime: "20:00",
+        duration: "01:40:00",
+        isWeekOff: "Working Day",
+        Type: ["Live class", "PDF", "folder"],
+        Class_path: [
+          "CTET CC Combo (Paper 1+2) M&S / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+          "BPSC TRE 4.0 - Chemistry / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+        ],
+      },
+    }),
+  },
+  {
+    label: "Class (data.event: create)",
+    apply: () => ({
+      timestamp: "2026-09-15T18:00:00.000Z",
+      data: {
+        event: "create",
+        courseId: ["718", "743"],
+        ClassId: "class_chem_som_part3",
+        courseName: ["CTET CC Combo (Paper 1+2) M&S", "BPSC TRE 4.0 - Chemistry"],
+        topic: "Chemistry - States of matter -Part - 3",
+        teacher: "Saurabh",
+        scheduledDate: "2026-09-14",
+        scheduledTime: "20:00",
+        duration: "01:40:00",
+        isWeekOff: "Working Day",
+        Type: ["Live class", "PDF", "folder"],
+        Class_path: [
+          "CTET CC Combo (Paper 1+2) M&S / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+          "BPSC TRE 4.0 - Chemistry / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+        ],
+      },
+    }),
+  },
+  {
     label: "Class Update / Reschedule (Multi-Course)",
     apply: () => ({
       event: "syllabus.scheduled.class.Update",
