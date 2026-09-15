@@ -57,6 +57,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `coupon.created` | New coupon created |
 | `coupon.updated` | Coupon modified |
 | `coupon.deleted` | Coupon removed |
+| `syllabus.class.scheduled` | Class scheduled notification with course, subject, topic, teacher, date & time |
 
 ## Quick Presets
 
@@ -66,6 +67,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | Exam after Expiry | `course.updated` with `examDate` = expiry + 30 days |
 | Price Change | `course.updated` with `currentPrice` = 1499 |
 | Coupon Expiry Tomorrow | `coupon.created` with `expiryDate` = tomorrow |
+| Class Scheduled (Template) | `syllabus.class.scheduled` with exact schema placeholders / template data |
+| Class Scheduled (Live Demo) | `syllabus.class.scheduled` with live class details ready for Tracko sync |
 
 ---
 

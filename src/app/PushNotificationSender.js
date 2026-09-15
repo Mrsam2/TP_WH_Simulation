@@ -152,6 +152,7 @@ export default function PushNotificationSender() {
   useEffect(() => {
     try {
       const savedToken = localStorage.getItem("tp_expo_push_token");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (savedToken) setToken(savedToken);
 
       const savedRecents = localStorage.getItem("tp_recent_push_tokens");

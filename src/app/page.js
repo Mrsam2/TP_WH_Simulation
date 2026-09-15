@@ -11,11 +11,13 @@ const EVENT_SCHEMAS = {
       { key: "id", label: "Course ID", type: "text", default: "appx_course_123" },
       { key: "name", label: "Name", type: "text", default: "BPSC TRE 4.0 - Maths & Science 2025" },
       { key: "category", label: "Category", type: "text", default: "BPSC" },
+      { key: "exact_path", label: "Exact Path", type: "text", default: "Teaching Exams / BPSC / TRE 4.0" },
       { key: "launchDate", label: "Launch Date", type: "datetime", default: "2025-01-15T00:00:00Z" },
       { key: "expiryDate", label: "Expiry Date", type: "datetime", default: "2026-06-30T00:00:00Z" },
       { key: "examDate", label: "Exam Date", type: "datetime", default: "2026-06-30T00:00:00Z" },
       { key: "currentPrice", label: "Current Price", type: "number", default: 2999 },
       { key: "status", label: "Status", type: "text", default: "active" },
+      { key: "bannerImage", label: "Banner Image URL", type: "text", default: "https://appx-content-v2.classx.co.in/paid_course3/2025-12-18-0_05192212341815827.png" },
     ],
   },
   "course.updated": {
@@ -24,11 +26,13 @@ const EVENT_SCHEMAS = {
       { key: "id", label: "Course ID", type: "text", default: "appx_course_123" },
       { key: "name", label: "Name", type: "text", default: "BPSC TRE 4.0 - Maths & Science 2025" },
       { key: "category", label: "Category", type: "text", default: "BPSC" },
+      { key: "exact_path", label: "Exact Path", type: "text", default: "Teaching Exams / BPSC / TRE 4.0" },
       { key: "launchDate", label: "Launch Date", type: "datetime", default: "2025-01-15T00:00:00Z" },
       { key: "expiryDate", label: "Expiry Date", type: "datetime", default: "2026-06-30T00:00:00Z" },
       { key: "examDate", label: "Exam Date", type: "datetime", default: "2026-06-30T00:00:00Z" },
       { key: "currentPrice", label: "Current Price", type: "number", default: 2999 },
       { key: "status", label: "Status", type: "text", default: "active" },
+      { key: "bannerImage", label: "Banner Image URL", type: "text", default: "https://appx-content-v2.classx.co.in/paid_course3/2025-12-18-0_05192212341815827.png" },
     ],
   },
   "course.deleted": {
@@ -101,6 +105,29 @@ const EVENT_SCHEMAS = {
       },
     ],
   },
+  "syllabus.class.scheduled": {
+    label: "syllabus.class.scheduled",
+    fields: [
+      { key: "courseId", label: "Course ID (courseId)", type: "text", default: "course_id" },
+      { key: "ClassId", label: "Class ID (ClassId)", type: "text", default: "id" },
+      { key: "courseName", label: "Course Name (courseName)", type: "text", default: "BPSC TRE 4.0 - Maths & Science" },
+      { key: "subject", label: "Subject (subject)", type: "text", default: "Hindi" },
+      { key: "topic", label: "Topic (topic / title)", type: "text", default: "title" },
+      { key: "chapter", label: "Chapter (chapter / Topic parent Folder)", type: "text", default: "(Topic parent Folder)" },
+      { key: "teacher", label: "Teacher / Faculty (teacher)", type: "text", default: "teacher" },
+      { key: "scheduledDate", label: "Scheduled Date (scheduledDate)", type: "text", default: "date_time" },
+      { key: "scheduledTime", label: "Scheduled Time (scheduledTime)", type: "text", default: "date_time" },
+      { key: "duration", label: "Duration (duration)", type: "text", default: "duration" },
+      { key: "isWeekOff", label: "Week Off (isWeekOff)", type: "text", default: "Working Day" },
+      { key: "classType", label: "Class Type (classType)", type: "text", default: "type" },
+      {
+        key: "Class_path",
+        label: "Class Path (Class_path)",
+        type: "text",
+        default: "CTET CC Combo (Paper 1+2) M&S - SEP 2026 TARGET 130+ CRASH COURSE / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+      },
+    ],
+  },
 };
 
 // datetime-local input expects "YYYY-MM-DDTHH:MM", payload needs full ISO with Z
@@ -129,11 +156,13 @@ const PRESETS = [
         id: "appx_course_123",
         name: "BPSC TRE 4.0 - Maths & Science 2025",
         category: "BPSC",
+        exact_path: "Teaching Exams / BPSC / TRE 4.0",
         launchDate: "2025-01-15T00:00:00Z",
         expiryDate: addDays(3),
         examDate: "2026-06-30T00:00:00Z",
         currentPrice: 2999,
         status: "active",
+        bannerImage: "https://appx-content-v2.classx.co.in/paid_course3/2025-12-18-0_05192212341815827.png",
       },
     }),
   },
@@ -150,11 +179,13 @@ const PRESETS = [
           id: "appx_course_123",
           name: "BPSC TRE 4.0 - Maths & Science 2025",
           category: "BPSC",
+          exact_path: "Teaching Exams / BPSC / TRE 4.0",
           launchDate: "2025-01-15T00:00:00Z",
           expiryDate: expiry,
           examDate: exam,
           currentPrice: 2999,
           status: "active",
+          bannerImage: "https://appx-content-v2.classx.co.in/paid_course3/2025-12-18-0_05192212341815827.png",
         },
       };
     },
@@ -167,11 +198,13 @@ const PRESETS = [
         id: "appx_course_123",
         name: "BPSC TRE 4.0 - Maths & Science 2025",
         category: "BPSC",
+        exact_path: "Teaching Exams / BPSC / TRE 4.0",
         launchDate: "2025-01-15T00:00:00Z",
         expiryDate: "2026-06-30T00:00:00Z",
         examDate: "2026-06-30T00:00:00Z",
         currentPrice: 1499,
         status: "active",
+        bannerImage: "https://appx-content-v2.classx.co.in/paid_course3/2025-12-18-0_05192212341815827.png",
       },
     }),
   },
@@ -185,6 +218,50 @@ const PRESETS = [
         discountPercent: 20,
         expiryDate: addDays(1),
         status: "active",
+      },
+    }),
+  },
+  {
+    label: "Class Scheduled (Template)",
+    apply: () => ({
+      event: "syllabus.class.scheduled",
+      timestamp: "2026-09-14T16:00:00.000Z",
+      data: {
+        courseId: "course_id",
+        ClassId: "id",
+        courseName: "BPSC TRE 4.0 - Maths & Science",
+        subject: "Hindi",
+        topic: "title",
+        chapter: "(Topic parent Folder)",
+        teacher: "teacher",
+        scheduledDate: "date_time",
+        scheduledTime: "date_time",
+        duration: "duration",
+        isWeekOff: "Working Day",
+        classType: "type",
+        Class_path: "CTET CC Combo (Paper 1+2) M&S - SEP 2026 TARGET 130+ CRASH COURSE / Chemistry / States of matter / Chemistry - States of matter -Part - 3",
+      },
+    }),
+  },
+  {
+    label: "Class Scheduled (Live Demo)",
+    apply: () => ({
+      event: "syllabus.class.scheduled",
+      timestamp: new Date().toISOString(),
+      data: {
+        courseId: "appx_course_123",
+        ClassId: "cls_2026_chem_03",
+        courseName: "BPSC TRE 4.0 - Maths & Science",
+        subject: "Hindi",
+        topic: "Hindi Grammar - Part 1",
+        chapter: "Vyakaran",
+        teacher: "Narjis Khatoon",
+        scheduledDate: new Date().toISOString().slice(0, 10),
+        scheduledTime: "16:00",
+        duration: "60",
+        isWeekOff: "Working Day",
+        classType: "Live",
+        Class_path: "BPSC TRE 4.0 - Maths & Science / Hindi / Vyakaran / Hindi Grammar - Part 1",
       },
     }),
   },
@@ -208,22 +285,21 @@ function statusColor(code) {
 
 export default function SimulatorPage() {
   const [activeTab, setActiveTab] = useState("webhook");
-  const [targetUrl, setTargetUrl] = useState("");
+  const [targetUrl, setTargetUrl] = useState("http://localhost:3000/api/webhook/appx");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    const origin = window.location.origin;
-    if (window.location.hostname === "localhost") {
-      setTargetUrl("http://localhost:3000/api/webhook/appx");
-    } else {
-      setTargetUrl(origin + "/api/webhook/appx");
+    if (typeof window !== "undefined" && window.location.hostname !== "localhost") {
+      setTargetUrl(window.location.origin + "/api/webhook/appx");
     }
   }, []);
   const [selectedEvent, setSelectedEvent] = useState("course.created");
   const [formData, setFormData] = useState(() =>
     defaultFormData("course.created")
   );
+  const [customTimestamp, setCustomTimestamp] = useState("");
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [log, setLog] = useState([]);
@@ -232,6 +308,7 @@ export default function SimulatorPage() {
     const ev = e.target.value;
     setSelectedEvent(ev);
     setFormData(defaultFormData(ev));
+    setCustomTimestamp(ev === "syllabus.class.scheduled" ? "2026-09-14T16:00:00.000Z" : "");
     setResponse(null);
   }, []);
 
@@ -240,8 +317,9 @@ export default function SimulatorPage() {
   }, []);
 
   const applyPreset = useCallback((preset) => {
-    const { event, data } = preset.apply();
+    const { event, data, timestamp } = preset.apply();
     setSelectedEvent(event);
+    setCustomTimestamp(timestamp || "");
     const newData = {};
     for (const [k, v] of Object.entries(data)) {
       newData[k] = String(v);
@@ -256,7 +334,9 @@ export default function SimulatorPage() {
     for (const f of schema.fields) {
       if (f.showWhen && formData[f.showWhen.key] !== f.showWhen.value) continue;
       if (f.type === "number") {
-        data[f.key] = Number(formData[f.key]);
+        const val = formData[f.key];
+        const num = Number(val);
+        data[f.key] = isNaN(num) || val === "" ? val : num;
       } else if (f.type === "multitext") {
         data[f.key] = (formData[f.key] || "")
           .split(",")
@@ -268,10 +348,10 @@ export default function SimulatorPage() {
     }
     return {
       event: selectedEvent,
-      timestamp: new Date().toISOString(),
+      timestamp: customTimestamp.trim() || new Date().toISOString(),
       data,
     };
-  }, [selectedEvent, formData]);
+  }, [selectedEvent, formData, customTimestamp]);
 
   const handleSend = useCallback(async () => {
     setLoading(true);
@@ -298,7 +378,7 @@ export default function SimulatorPage() {
     } finally {
       setLoading(false);
     }
-  }, [buildPayload, selectedEvent]);
+  }, [buildPayload, selectedEvent, targetUrl]);
 
   const schema = EVENT_SCHEMAS[selectedEvent];
 
@@ -316,6 +396,7 @@ export default function SimulatorPage() {
               }`}
               onClick={() => setActiveTab("webhook")}
               type="button"
+              suppressHydrationWarning
             >
               ⚡ Webhook Simulator
             </button>
@@ -325,6 +406,7 @@ export default function SimulatorPage() {
               }`}
               onClick={() => setActiveTab("push")}
               type="button"
+              suppressHydrationWarning
             >
               🔔 Push Notifications
             </button>
@@ -398,13 +480,19 @@ export default function SimulatorPage() {
             <h3 className={styles.sectionTitle}>Payload Data</h3>
             <div className={styles.fieldGroup}>
               <label className={styles.fieldLabel}>
-                Timestamp
+                Timestamp (ISO 8601)
                 <input
                   className={styles.input}
-                  value="Auto-generated on send"
-                  disabled
+                  placeholder="Auto-generated on send (e.g. 2026-09-14T16:00:00.000Z)"
+                  value={customTimestamp}
+                  onChange={(e) => setCustomTimestamp(e.target.value)}
                   suppressHydrationWarning
                 />
+                <span className={styles.fieldHint}>
+                  {customTimestamp.trim()
+                    ? "Custom timestamp specified"
+                    : "Leave empty to auto-generate current UTC ISO timestamp on send"}
+                </span>
               </label>
               {schema.fields.map((f) => {
                 if (f.showWhen && formData[f.showWhen.key] !== f.showWhen.value)
@@ -476,6 +564,19 @@ export default function SimulatorPage() {
 
         {/* Right Panel */}
         <div className={styles.rightPanel}>
+          {/* Live Payload Preview */}
+          <section className={styles.section}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <h3 className={styles.sectionTitle}>Outgoing Payload Preview</h3>
+              <span className={styles.fieldHint} style={{ margin: 0 }}>
+                Live JSON generated from form
+              </span>
+            </div>
+            <pre className={styles.pre} suppressHydrationWarning>
+              {JSON.stringify(buildPayload(), null, 2)}
+            </pre>
+          </section>
+
           {/* Response */}
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Response</h3>

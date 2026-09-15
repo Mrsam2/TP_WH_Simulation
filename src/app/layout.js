@@ -13,7 +13,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false">
         <main>{children}</main>
       </body>
     </html>
